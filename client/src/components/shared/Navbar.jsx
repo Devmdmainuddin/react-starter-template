@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import Image from "./Image";
 
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
+import useAuth from "../../hooks/useAuth";
 // IoMdClose,
 const Navbar = () => {
-    // const { user, logOut } = useAuth()
+    const { user, logOut } = useAuth()
     const [showMenu, setShowMenu] = useState(false);
     const [proOpen, setProOpen] = useState(false);
 
@@ -21,27 +22,27 @@ const Navbar = () => {
             path: '/'
         },
         {
-            title: 'Coures',
-            path: '/'
+            title: 'about',
+            path: '/about'
         },
         {
-            title: 'Support',
-            path: '/'
+            title: 'contact',
+            path: '/contact'
         },
         {
             title: 'Blog',
-            path: '/'
+            path: '/blog'
         },
         {
-            title: 'My Classes',
-            path: '/'
+            title: 'login',
+            path: '/login'
         }
-
     ]
     useEffect(() => {
         function resize() {
             if (window.innerWidth < 767.99) {
                 setProOpen(false)
+                setShowMenu(false)
             }
         }
         resize()
@@ -66,8 +67,8 @@ const Navbar = () => {
                             </nav>
                             {/* Profile */}
                             <div className=" hidden md:flex w-12">
-                                {/* <Image src={user?.photoURL || '/user.png'} className='rounded full' alt=''></Image> */}
-                                <Image src='/user.png' className='rounded full' alt=''></Image>
+                                <Image src={user?.photoURL || '/user.png'} className='rounded-full' alt=''></Image>
+                                {/* <Image src='/user.png' className='rounded full' alt=''></Image> */}
                             </div>
                             {/* Hamburger */}
                             <div className="flex items-center gap-4 md:hidden ">
